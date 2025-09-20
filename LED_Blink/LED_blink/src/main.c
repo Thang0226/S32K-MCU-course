@@ -31,7 +31,6 @@
 #include "S32K144.h"
 
 #include <stdio.h>
-#include <stdint.h>
 
 #if defined (__ghs__)
     #define __INTERRUPT_SVC  __interrupt
@@ -55,6 +54,7 @@ int counter, accumulator = 0, limit_value = 1000000;
 int main(void) {
 
 	//1. Configure clock for GPIOD
+	IP_PCC->PCCn[PCC_PORTD_INDEX] = 0;
 	IP_PCC->PCCn[PCC_PORTD_INDEX] |= PCC_PCCn_CGC_MASK;	// bit 30 = 1
 
 	//2. Configure PTD0, PTD15, PTD16 as GPIOs (Configure use IP_PORTx, Data use IP_PTx)
@@ -97,9 +97,9 @@ __INTERRUPT_SVC void SVC_Handler() {
 
 
 
-void delay_ms(int ms) {		// default 48MHz --> 1ms = loop 48000 times?
+void delay_ms(int ms) {		// default 48MHz --> 1ms = loop 48000 times? Or 8MHz?
     for (int i = 0; i < ms; i++) {
-    	int count = 48000;
+    	int count = 8000;
         while (--count > 0);
     }
 }
