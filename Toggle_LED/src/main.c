@@ -13,7 +13,9 @@ int main(void) {
 
 	// Configure LEDs (PD15, PD16) as output
 	PORT_SetPinMux(LED_PORT, LED_RED_PIN, GPIO_MUX);
+	GPIO_SetPinDirection(LED_GPIO, LED_RED_PIN, SET_OUTPUT);
 	PORT_SetPinMux(LED_PORT, LED_GREEN_PIN, GPIO_MUX);
+	GPIO_SetPinDirection(LED_GPIO, LED_GREEN_PIN, SET_OUTPUT);
 	IP_PTD->PDDR |= (1 << 15) | (1 << 16);		// Turn off LEDs
 
 	// Configure Buttons PTC12 & PTC13 as GPIOs with rising edge interrupt

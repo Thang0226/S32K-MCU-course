@@ -6,6 +6,8 @@
 #define LED_GPIO	IP_PTD
 #define BTN_GPIO	IP_PTC
 
+#define SET_OUTPUT	1
+#define SET_INPUT	0
 
 // Set pin as input/output
 void GPIO_SetPinDirection(GPIO_Type *gpio, uint32_t pin, uint32_t output);

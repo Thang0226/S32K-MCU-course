@@ -13,6 +13,9 @@
 #define DISABLED_MUX	0
 #define GPIO_MUX		1
 
+#define NVIC_ISER1   (*(volatile uint32_t *)0xE000E104) // IRQ 32–63
+#define NVIC_ICPR1   (*(volatile uint32_t *)0xE000E284)
+
 // Interrupt edge selection
 typedef enum {
     PORT_INTERRUPT_DISABLED = 0b0000,
@@ -39,3 +42,6 @@ void PORT_EnableInterrupt(PORT_Type *port, uint32_t pin, PortInterrupt_Type irqc
 
 // ISR handlers (Port C for buttons)
 void PORTC_IRQHandler(void);
+
+// NVIC Enable IRQ
+void NVIC_EnableIRQ(uint32_t deviceInterrupt);
