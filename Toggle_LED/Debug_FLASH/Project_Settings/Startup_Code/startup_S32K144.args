@@ -1,0 +1,7 @@
+-c
+-I"C:/Users/thang/workspaceS32DS.3.6.3/Toggle_LED/include"
+-x assembler-with-cpp
+-DSTART_FROM_FLASH
+-g3
+-mcpu=cortex-m4
+-specs=rdimon.specs
